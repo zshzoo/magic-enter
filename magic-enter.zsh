@@ -3,9 +3,9 @@ if ! typeset -f magic-enter-cmd > /dev/null; then
     function magic-enter-cmd {
         local cmd
         if [[ "$OSTYPE" == darwin* ]]; then
-            cmd="ls -FG"
+            cmd="ls -G"
         else
-            cmd="ls"
+            cmd="ls --color=auto"
         fi
         if command git rev-parse --is-inside-work-tree &>/dev/null; then
             cmd="$cmd && git status -sb"
