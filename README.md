@@ -10,6 +10,17 @@
 
 Based on [magic-enter](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/magic-enter).
 
+## Customization
+
+You can define your own `magic-enter-cmd` function. Whatever it echos will be run when
+no other command is given.
+
+```zsh
+function magic-enter-cmd {
+    echo "ls -lFh"
+}
+```
+
 ## Installation
 
 ### Install with a Zsh plugin manager
