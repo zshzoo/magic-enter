@@ -1,4 +1,5 @@
+.cache/
+.DS_Store
 ~*
 *.zwc
 *.zwc.old
-.ztap/
