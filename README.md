@@ -12,12 +12,22 @@ Based on [magic-enter](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ma
 
 ## Customization
 
-You can define your own `magic-enter-cmd` function. Whatever it echos will be run when
-no other command is given.
+You can define your own `magic-enter` commands using the following zstyles.
+
+```zsh
+zstyle -s ':zshzoo:magic-enter' command 'ls -laFh .'
+zstyle -s ':zshzoo:magic-enter' git-command 'git status -sb .'
+```
+
+You can also define your own `magic-enter-cmd` function. Whatever it prints is what will be run when no other command is given. You can use this if you want to extend the command beyond just looking for a git repo.
 
 ```zsh
 function magic-enter-cmd {
-    echo "ls -lFh"
+  if [[ -n "$$VIRTUAL_ENV" ]]; then
+    echo "python3 --version"
+  else
+    echo "ls -laFh ."
+  fi
 }
 ```
 
@@ -46,7 +56,7 @@ Then, in your .zshrc, add the following line:
 source ${ZDOTDIR:-~}/.zplugins/magic-enter/magic-enter.zsh
 ```
 
-### Install for Prezto
+### Prezto Install
 
 To install with [Prezto][prezto], first clone the repo from an interactive Zsh session:
 
